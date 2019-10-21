@@ -6,9 +6,10 @@ import time
 GPIO.setmode (GPIO.BOARD)
 GPIO.setwarnings(False)
 
-# Switch 1
+# Enable switches and pull up resistors
 
-GPIO.setup(12, GPIO.IN, pull_up_down=GPIO.PUD_UP)   # Enable switch and pull up resistors
+GPIO.setup(12, GPIO.IN, pull_up_down=GPIO.PUD_UP)   # Motor 1 Forward
+GPIO.setup(16, GPIO.IN, pull_up_down=GPIO.PUD_UP)   # Motor 1 Backwards
 
 
 # Stepper 1 Pins
@@ -56,10 +57,19 @@ def backwards(delay, steps):
             time.sleep(delay)
 
 if __name__ == '__main__':
-    delay = raw_input("Speed (ms)? ")
-    steps = 8
+
+    # Set speed and reactiveness of motors
+
+    delay = 1           # Speed of motor in ms (time between steps)
+    steps = 8           # Steps per interation
+
     while True:
-        switch1 = GPIO.input(12)
-        if switch1 == False:
+
+        motor_1_forward = GPIO.input(12)
+        motor_1_backward = GPIO.input(16)
+
+        if motor_1_forward == False:
             forward(int(delay)/1000.0, int(steps))
+        if motor_1_backward == False:
+            backwards(int(delay)/1000.0, int(steps))
         time.sleep(0.001)
