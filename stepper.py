@@ -33,12 +33,20 @@ def setStep(w1, w2, w3, w4):
     GPIO.output(coil_B_2_pin, w4)
 
 def forward(delay, steps):
+    print('''
+    Moving Forward
+    
+    ''')
     for i in range(steps):
         for j in range(StepCount):
             setStep(Seq[j][0], Seq[j][1], Seq[j][2], Seq[j][3])
             time.sleep(delay)
 
 def backwards(delay, steps):
+    print('''
+    Moving Backwards
+    
+    ''')
     for i in range(steps):
         for j in reversed(range(StepCount)):
             setStep(Seq[j][0], Seq[j][1], Seq[j][2], Seq[j][3])
@@ -46,8 +54,12 @@ def backwards(delay, steps):
 
 if __name__ == '__main__':
     while True:
-        delay = raw_input("Time Delay (ms)?")
-        steps = raw_input("How many steps forward?")
+        delay = raw_input("Time Delay (ms)? ")
+        steps = raw_input("How many steps forward? ")
         forward(int(delay) / 1000.0, int(steps))
-        steps = raw_input("How many steps backwards?")
+        steps = raw_input("How many steps backwards? ")
         backwards(int(delay) / 1000.0, int(steps))
+        done = raw_input("Exit (y/N)? ")
+        if done == "y":
+            GPIO.cleanup()
+            exit()
