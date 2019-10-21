@@ -70,6 +70,6 @@ if __name__ == '__main__':
 
         if motor_1_forward == False:
             forward(int(delay)/1000.0, int(steps))
-        if motor_1_backward == False:
+        elif motor_1_backward == False:
             backwards(int(delay)/1000.0, int(steps))
         time.sleep(0.001)
