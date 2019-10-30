@@ -32,7 +32,7 @@ async def move_left(delay, step):
     pan.motor_run(pan_gpio_pins, float(delay), int(step), True, False,"half", .05)
 
 async def move_right(delay, step):
-    pan.motor_run(pan_gpio_pins, float(delay), int(step), False, False,"half", .05)
+    pan.motor_run(pan_gpio_pins, float(delay), int(step), False,False,"half", .05)
 
 
 # Script
@@ -58,10 +58,9 @@ async def main():
             speed = 0.01
         else:
             speed = 0.1
-        #steps = input('Steps? ')
-
-
-
+ 
+        # Add 4 items to queue manually
+        
         asyncio.create_task(move_up(0.001, 50))
         asyncio.create_task(move_down(0.001, 50))
         asyncio.create_task(move_left(0.001, 50))
