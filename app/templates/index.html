@@ -1,6 +1,92 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% block content %}
+<h1>Hi, {{ current_user.username }}!</h1>
+<div class="jog-panel" style="" data-bind="visible: loginState.isUser">
+  <!-- XY jogging control panel -->
+  <div id="control-jog-xy" class="jog-panel">
+    <h3>Pan & Tilt</h3>
+    <div>
+      <button id="control-yinc" class="btn box">
+        <i class="fa fa-arrow-up"></i>
+      </button>
+    </div>
+    <div>
+      <button
+        id="control-xdec"
+        class="btn box pull-left"
+        data-bind="enable: isOperational() &amp;&amp; !isPrinting() &amp;&amp; loginState.isUser(), click: function() { sendJogCommand('x',-1) }"
+      >
+        <i class="fa fa-arrow-left"></i>
+      </button>
+      <button
+        id="control-xyhome"
+        class="btn box pull-left"
+        data-bind="enable: isOperational() &amp;&amp; !isPrinting() &amp;&amp; loginState.isUser(), click: function() { $root.sendHomeCommand(['x', 'y']) }"
+      >
+        <i class="fa fa-home"></i>
+      </button>
+      <button
+        id="control-xinc"
+        class="btn box pull-left"
+        data-bind="enable: isOperational() &amp;&amp; !isPrinting() &amp;&amp; loginState.isUser(), click: function() { $root.sendJogCommand('x',1) }"
+      >
+        <i class="fa fa-arrow-right"></i>
+      </button>
+    </div>
+    <div>
+      <button
+        id="control-ydec"
+        class="btn box"
+        data-bind="enable: isOperational() &amp;&amp; !isPrinting() &amp;&amp; loginState.isUser(), click: function() { $root.sendJogCommand('y',-1) }"
+      >
+        <i class="fa fa-arrow-down"></i>
+      </button>
+    </div>
+  </div>
+  <!-- Z jogging control panel -->
 
-{% block content %}
-    <h1>Hi, {{ current_user.username }}!</h1>
+  <!-- Jog distance -->
+  <h3>Jog Distance</h3>
+  <div class="distance">
+    <div class="btn-group" data-toggle="buttons-radio" id="jog_distance">
+      <!-- ko foreach: distances -->
+      <button
+        type="button"
+        class="btn distance"
+        data-bind="enable: $root.isOperational() &amp;&amp; !$root.isPrinting() &amp;&amp; $root.loginState.isUser(), text: $data, click: function() { $root.distance($data) }, css: { active: $root.distance() === $data }, attr: { id: 'control-distance' + $root.stripDistanceDecimal($data) }"
+        id="control-distance01"
+      >
+        0.1
+      </button>
+
+      <button
+        type="button"
+        class="btn distance"
+        data-bind="enable: $root.isOperational() &amp;&amp; !$root.isPrinting() &amp;&amp; $root.loginState.isUser(), text: $data, click: function() { $root.distance($data) }, css: { active: $root.distance() === $data }, attr: { id: 'control-distance' + $root.stripDistanceDecimal($data) }"
+        id="control-distance1"
+      >
+        1
+      </button>
+
+      <button
+        type="button"
+        class="btn distance active"
+        data-bind="enable: $root.isOperational() &amp;&amp; !$root.isPrinting() &amp;&amp; $root.loginState.isUser(), text: $data, click: function() { $root.distance($data) }, css: { active: $root.distance() === $data }, attr: { id: 'control-distance' + $root.stripDistanceDecimal($data) }"
+        id="control-distance10"
+      >
+        10
+      </button>
+
+      <button
+        type="button"
+        class="btn distance"
+        data-bind="enable: $root.isOperational() &amp;&amp; !$root.isPrinting() &amp;&amp; $root.loginState.isUser(), text: $data, click: function() { $root.distance($data) }, css: { active: $root.distance() === $data }, attr: { id: 'control-distance' + $root.stripDistanceDecimal($data) }"
+        id="control-distance100"
+      >
+        100
+      </button>
+      <!-- /ko -->
+    </div>
+  </div>
+</div>
 
 {% endblock %}

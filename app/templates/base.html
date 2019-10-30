@@ -1,14 +1,16 @@
 <html>
   <head>
     {% if title %}
-    <title>{{ title }} - Microblog</title>
+    <title>{{ title }} - D&D Webcam Control</title>
     {% else %}
-    <title>Welcome to Microblog</title>
+    <title>D&D Webcam Control</title>
     {% endif %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href='../static/style.css'/>
   </head>
   <body>
     <div>
-      Microblog:
+      D&D Webcam Control:
       <a href="{{ url_for('index') }}">Home</a>
       {% if current_user.is_anonymous %}
       <a href="{{ url_for('login') }}">Login</a>

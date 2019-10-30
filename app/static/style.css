@@ -1,22 +1,15 @@
-body{
-	background: blue;
-	color: yellow;
-	padding:1%;
-	text-align: center;
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 30px;
+  line-height: 30px;
+  color: #333;
 }
-
-.button {
-	font: bold 15px Arial;
-	text-decoration: none;
-	background-color: #EEEEEE;
-	color: #333333;
-	padding: 2px 6px 2px 6px;
-	border-top: 1px solid #CCCCCC;
-	border-right: 1px solid #333333;
-	border-bottom: 1px solid #333333;
-	border-left: 1px solid #CCCCCC;
+element {
 }
-
-img{
-	display: inline-block;
+#control .jog-panel > div {
+  text-align: center;
+}
+#control .jog-panel {
+  float: left;
+  margin-right: 19px;
 }
