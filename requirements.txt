@@ -3,7 +3,7 @@ astroid==2.3.2
 autopep8==1.4.4
 betterpath==0.2.2
 Click==7.0
-Flask==1.1.1
+Flask==2.3.2
 Flask-Login==0.4.1
 Flask-Migrate==2.5.2
 Flask-SQLAlchemy==2.4.1
